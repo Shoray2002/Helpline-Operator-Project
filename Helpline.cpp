@@ -10,64 +10,93 @@ void centerstring(string s, int width)
   cout << s;
 }
 
-// class caller_info
-// {
-//   char name[50];
-//   char location[100];
-//   char emr_type[5];
-//   char urgency[3];
-//   long long ph_number;
+class Caller_info
+{
+  string name;
+  string location;
+  string emr_type;
+  string urgency;
+  string ph_number;
 
-// public:
-//   caller_info()
-//   {
-//   }
-//   void get_caller_name()
-//   {
-//     cout << "Enter name of caller\n";
-//     cin >> name;
-//   }
+public:
+  Caller_info()
+  {
+    name = "Tester";
+    location = "Nowhere";
+    emr_type = "0";
+    urgency = "0";
+    ph_number = "101";
+  }
+  void get_caller_name()
+  {
+    system("cls");
+    cout << endl;
+    centerstring("Enter name of caller", 80);
+    centerstring("...", 79);
+    cin >> name;
+  }
 
-//   void get_location()
-//   {
-//     cout << "Enter location of emergency\n";
-//     cin >> location;
-//   }
+  void get_location()
+  {
+    system("cls");
+    cout << endl;
+    centerstring("Enter location of caller", 80);
+    centerstring("...", 79);
+    cin >> location;
+  }
 
-//   void get_emr_type()
-//   {
-//     cout << "Enter type of emergency\n";
-//     cout << "\"p\" for police\n";
-//     cout << "\"m\" for medical\n";
-//     cout << "\"f\" for fire\n";
-//     cout << " enter a combination of the above if multiple services are needed\n";
-//     cin >> emr_type;
-//   }
+  void get_emr_type()
+  {
+    system("cls");
+    cout << endl;
+    centerstring("Enter type of emergency", 80);
+    cout << endl;
+    centerstring("\"p\" for police", 80);
+    cout << endl;
+    centerstring("\"f\" for fire", 80);
+    cout << endl;
+    centerstring("\"m\" for medical", 80);
+    cout << endl;
+    centerstring("\"c\" for COVID", 80);
+    cout << endl;
+    centerstring("(Enter a Combination of the above if Multiple Services are needed): ", 80);
+    centerstring("...", 80);
+    cin >> emr_type;
+  }
 
-//   void get_urgency()
-//   {
-//     cout << "Enter color of urgency\n";
-//     cout << "\"r\" for Code Red\n";
-//     cout << "\"o\" for Code Orange\n";
-//     cout << "\"y\" for Code Yellow\n";
-//     cout << "In decreasing order of severity\n";
-//     cin >> urgency;
-//   }
+  void get_urgency()
+  {
+    system("cls");
+    cout << endl;
+    centerstring("Enter color of urgency", 80);
+    cout << endl;
+    centerstring("\"r\" for Code Red", 80);
+    cout << endl;
+    centerstring("\"o\" for Code Orange", 80);
+    cout << endl;
+    centerstring("\"y\" for Code Yellow", 80);
+    centerstring("...", 80);
+    cin >> urgency;
+  }
 
-//   void get_ph_number()
-//   {
-//     cout << "Enter caller's phone number\n";
-//     cin >> ph_number;
-//   }
-//   void show_caller_info()
-//   {
-//     cout << "Caller Name: " << name << endl;
-//     cout << "Emergency type: " << emr_type << endl;
-//     cout << "Status of urgency: " << urgency << endl;
-//     cout << "Caller Number: " << ph_number << endl;
-//     cout << "Caller's location: " << location << endl;
-//   }
-// };
+  void get_ph_number()
+  {
+    system("cls");
+    cout << endl;
+    centerstring("Enter caller's phone number: ", 80);
+    centerstring("...", 80);
+    cin >> ph_number;
+  }
+  void show_caller_info()
+  {
+    system("cls");
+    cout << "Caller Name: " << name << endl;
+    cout << "Emergency type: " << emr_type << endl;
+    cout << "Status of urgency: " << urgency << endl;
+    cout << "Caller Number: " << ph_number << endl;
+    cout << "Caller's location: " << location << endl;
+  }
+};
 
 // password
 class Password
@@ -85,16 +114,15 @@ public:
 
     // s.admin_page();
   }
-
 };
 // Show
 
-class Show : public Password
+class Show : public Password, public Caller_info
 {
 public:
   int password_screen()
   {
-
+    system("cls");
     string p_in;
     int chances = 3;
     centerstring("Welcome", 80);
@@ -161,18 +189,35 @@ public:
     else
       return choice;
   }
+  void info_in_page()
+  {
+
+    Caller_info::get_caller_name();
+    Caller_info::get_location();
+    Caller_info::get_emr_type();
+    Caller_info::get_urgency();
+    Caller_info::get_ph_number();
+    Caller_info::show_caller_info();
+  }
 } s;
 
 int main()
 {
 
+label3:
   if (s.password_screen())
   { // cout<<s.welcome_screen();
     if (s.welcome_screen())
     {
+    label4:
       switch (s.admin_page())
       {
       case 1:
+        s.info_in_page();
+        cout << "\nPress Enter to go to admin menu...";
+        cin.ignore();
+        cin.get();
+        goto label4;
         break;
       case 2:
         break;
@@ -181,10 +226,16 @@ int main()
       case 4:
         s.set_password();
         cout << s.get_password();
-        s.admin_page();
+        cout << "\nPress Enter to go to admin menu...";
+
+        cin.ignore();
+        cin.get();
+
+        // s.admin_page();
+        goto label4;
         break;
       case 5:
-        // s.password_screen();
+        goto label3;
         break;
       default:
         cout << "This will never be invoked";
@@ -209,11 +260,4 @@ int main()
   cin.ignore();
   cin.get();
   return 0;
-  // caller_info c1;
-  // c1.get_caller_name();
-  // c1.get_emr_type();
-  // c1.get_urgency();
-  // c1.get_ph_number();
-  // c1.get_location();
-  // c1.show_caller_info();
 }
