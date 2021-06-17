@@ -181,7 +181,7 @@ int main()
       case 4:
         s.set_password();
         cout << s.get_password();
-        // s.admin_page();
+        s.admin_page();
         break;
       case 5:
         // s.password_screen();
