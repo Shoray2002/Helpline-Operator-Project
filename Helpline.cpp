@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+int keys[4] = {30, 37, -4, 7};
 void centerstring(string s, int width)
 {
   int l = s.length();
@@ -9,7 +9,22 @@ void centerstring(string s, int width)
     cout << " ";
   cout << s;
 }
-
+string encrypter(string s)
+{
+  for (int i = 0; i < s.length(); i++)
+  {
+    s[i] = s[i] + keys[i];
+  }
+  return s;
+}
+string decrypter(string s)
+{
+  for (int i = 0; i < s.length(); i++)
+  {
+    s[i] = s[i] - keys[i];
+  }
+  return s;
+}
 class Caller_info
 {
   string name;
@@ -33,7 +48,8 @@ public:
     cout << endl;
     centerstring("Enter name of caller", 80);
     centerstring("...", 79);
-    cin >> name;
+    cin.ignore();
+    getline(cin, name);
   }
 
   void get_location()
@@ -42,7 +58,8 @@ public:
     cout << endl;
     centerstring("Enter location of caller", 80);
     centerstring("...", 79);
-    cin >> location;
+    // cin.ignore();
+    getline(cin, location);
   }
 
   void get_emr_type()
@@ -104,14 +121,38 @@ class Password
   string password;
 
 public:
-  Password() { password = "0000"; }
-  string get_password() { return password; }
+  // Password()
+  // {
+
+  //   // ofstream pword;
+  //   // pword.open("encrpted.txt");
+  //   // pword << password;
+  //   // pword.close();
+  //   fstream pword;
+  //   pword.open("encrypted.txt", ios::out);
+  //   pword << encrypter("0000");
+  //   pword.close();
+  // }
+  string get_password()
+  {
+    fstream pword;
+    pword.open("encrypted.txt", ios::in);
+    pword.seekg(0, ios::beg);
+    string temp;
+    getline(pword, temp);
+    pword.close();
+    return decrypter(temp);
+  }
   void set_password()
   {
     cout << endl;
     centerstring("Enter the new password: ", 80);
     cin >> password;
+    fstream pword;
+    pword.open("encrypted.txt", ios::out);
 
+    pword << encrypter(password);
+    pword.close();
     // s.admin_page();
   }
 };
@@ -225,7 +266,7 @@ label3:
         break;
       case 4:
         s.set_password();
-        cout << s.get_password();
+        // cout << s.get_password();
         cout << "\nPress Enter to go to admin menu...";
 
         cin.ignore();
@@ -248,12 +289,6 @@ label3:
 
     centerstring("You Failed to Enter the correct Password", 80);
   }
-
-  class Admin_screen_actions : public Password
-  {
-  public:
-    // get_caller_info();
-  };
 
   cout << "\n\nPress Enter to exit program...";
 
