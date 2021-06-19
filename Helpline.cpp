@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
+#include "sha512.h"
 using namespace std;
-int keys[4] = {30, 37, -4, 7};
+
+//int keys[4] = {30, 37, -4, 7};
 void centerstring(string s, int width)
 {
   int l = s.length();
@@ -9,22 +11,22 @@ void centerstring(string s, int width)
     cout << " ";
   cout << s;
 }
-string encrypter(string s)
-{
-  for (int i = 0; i < s.length(); i++)
-  {
-    s[i] = s[i] + keys[i];
-  }
-  return s;
-}
-string decrypter(string s)
-{
-  for (int i = 0; i < s.length(); i++)
-  {
-    s[i] = s[i] - keys[i];
-  }
-  return s;
-}
+//string encrypter(string s)
+//{
+//  for (int i = 0; i < s.length(); i++)
+//  {
+//    s[i] = s[i] + keys[i];
+//  }
+//  return s;
+//}
+//string decrypter(string s)
+//{
+//  for (int i = 0; i < s.length(); i++)
+//  {
+//    s[i] = s[i] - keys[i];
+//  }
+//  return s;
+//}
 class Caller_info
 {
   string name;
@@ -133,15 +135,15 @@ public:
   //   pword << encrypter("0000");
   //   pword.close();
   // }
-  string get_password()
+  string get_password_hash()
   {
     fstream pword;
-    pword.open("encrypted.txt", ios::in);
+    pword.open("hashed_pass.txt", ios::in);
     pword.seekg(0, ios::beg);
     string temp;
     getline(pword, temp);
     pword.close();
-    return decrypter(temp);
+    return temp;
   }
   void set_password()
   {
@@ -149,9 +151,9 @@ public:
     centerstring("Enter the new password: ", 80);
     cin >> password;
     fstream pword;
-    pword.open("encrypted.txt", ios::out);
+    pword.open("hashed_pass.txt", ios::out);
 
-    pword << encrypter(password);
+    pword << sha512(password);
     pword.close();
     // s.admin_page();
   }
@@ -173,7 +175,7 @@ public:
       cout << endl;
       centerstring("Enter Your Admin Password:", 80);
       cin >> p_in;
-      if (p_in == Password::get_password())
+      if (sha512(p_in) == Password::get_password_hash())
       {
         return 1;
       }
