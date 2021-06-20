@@ -46,7 +46,7 @@ public:
   }
   void get_caller_name()
   {
-    system("cls");
+    system("clear");
     cout << endl;
     centerstring("Enter name of caller", 80);
     centerstring("...", 79);
@@ -56,7 +56,7 @@ public:
 
   void get_location()
   {
-    system("cls");
+    system("clear");
     cout << endl;
     centerstring("Enter location of caller", 80);
     centerstring("...", 79);
@@ -66,7 +66,7 @@ public:
 
   void get_emr_type()
   {
-    system("cls");
+    system("clear");
     cout << endl;
     centerstring("Enter type of emergency", 80);
     cout << endl;
@@ -85,7 +85,7 @@ public:
 
   void get_urgency()
   {
-    system("cls");
+    system("clear");
     cout << endl;
     centerstring("Enter color of urgency", 80);
     cout << endl;
@@ -100,7 +100,7 @@ public:
 
   void get_ph_number()
   {
-    system("cls");
+    system("clear");
     cout << endl;
     centerstring("Enter caller's phone number: ", 80);
     centerstring("...", 80);
@@ -108,7 +108,7 @@ public:
   }
   void show_caller_info()
   {
-    system("cls");
+    system("clear");
     cout << "Caller Name: " << name << endl;
     cout << "Emergency type: " << emr_type << endl;
     cout << "Status of urgency: " << urgency << endl;
@@ -165,7 +165,7 @@ class Show : public Password, public Caller_info
 public:
   int password_screen()
   {
-    system("cls");
+    system("clear");
     string p_in;
     int chances = 3;
     centerstring("Welcome", 80);
@@ -190,7 +190,7 @@ public:
   }
   int welcome_screen()
   {
-    system("cls");
+    system("clear");
     centerstring("Welcome Administrator", 80);
     cout << endl
          << endl;
@@ -203,7 +203,7 @@ public:
   int admin_page()
   {
   label1:
-    system("cls");
+    system("clear");
     centerstring("Admin Menu", 80);
     cout << endl
          << endl;
@@ -278,7 +278,6 @@ label3:
         goto label4;
         break;
       case 5:
-        goto label3;
         break;
       default:
         cout << "This will never be invoked";
@@ -287,7 +286,7 @@ label3:
   }
   else
   {
-    system("cls");
+    system("clear");
 
     centerstring("You Failed to Enter the correct Password", 80);
   }
