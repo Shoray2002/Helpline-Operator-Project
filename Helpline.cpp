@@ -242,6 +242,16 @@ public:
     Caller_info::get_ph_number();
     Caller_info::show_caller_info();
   }
+  int info_out_page()
+  {
+    centerstring("Caller Information",80);
+    cout << endl
+         << endl;
+    centerstring("1. View Individual caller Information", 80);
+    cout << endl;
+    centerstring("2. View ", 80);
+    cout << endl;
+  }
 } s;
 
 int main()
@@ -265,7 +275,8 @@ label3:
       case 2:
         break;
       case 3:
-        break;
+        if (s.info_out_page())
+          break;
       case 4:
         s.set_password();
         // cout << s.get_password();
