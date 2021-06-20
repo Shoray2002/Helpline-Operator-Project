@@ -46,7 +46,7 @@ public:
   }
   void get_caller_name()
   {
-    system("clear");
+    system("clear||cls");
     cout << endl;
     centerstring("Enter name of caller", 80);
     centerstring("...", 79);
@@ -56,7 +56,7 @@ public:
 
   void get_location()
   {
-    system("clear");
+    system("clear||cls");
     cout << endl;
     centerstring("Enter location of caller", 80);
     centerstring("...", 79);
@@ -66,7 +66,7 @@ public:
 
   void get_emr_type()
   {
-    system("clear");
+    system("clear||cls");
     cout << endl;
     centerstring("Enter type of emergency", 80);
     cout << endl;
@@ -85,7 +85,7 @@ public:
 
   void get_urgency()
   {
-    system("clear");
+    system("clear||cls");
     cout << endl;
     centerstring("Enter color of urgency", 80);
     cout << endl;
@@ -100,7 +100,7 @@ public:
 
   void get_ph_number()
   {
-    system("clear");
+    system("clear||cls");
     cout << endl;
     centerstring("Enter caller's phone number: ", 80);
     centerstring("...", 80);
@@ -108,7 +108,7 @@ public:
   }
   void show_caller_info()
   {
-    system("clear");
+    system("clear||cls");
     cout << "Caller Name: " << name << endl;
     cout << "Emergency type: " << emr_type << endl;
     cout << "Status of urgency: " << urgency << endl;
@@ -165,7 +165,7 @@ class Show : public Password, public Caller_info
 public:
   int password_screen()
   {
-    system("clear");
+    system("clear||cls");
     string p_in;
     int chances = 3;
     centerstring("Welcome", 80);
@@ -190,7 +190,7 @@ public:
   }
   int welcome_screen()
   {
-    system("clear");
+    system("clear||cls");
     centerstring("Welcome Administrator", 80);
     cout << endl
          << endl;
@@ -203,7 +203,7 @@ public:
   int admin_page()
   {
   label1:
-    system("clear");
+    system("clear||cls");
     centerstring("Admin Menu", 80);
     cout << endl
          << endl;
@@ -242,16 +242,16 @@ public:
     Caller_info::get_ph_number();
     Caller_info::show_caller_info();
   }
-  int info_out_page()
-  {
-    centerstring("Caller Information",80);
-    cout << endl
-         << endl;
-    centerstring("1. View Individual caller Information", 80);
-    cout << endl;
-    centerstring("2. View ", 80);
-    cout << endl;
-  }
+  // int info_out_page()
+  // {
+  //   centerstring("Caller Information",80);
+  //   cout << endl
+  //        << endl;
+  //   centerstring("1. View Individual caller Information", 80);
+  //   cout << endl;
+  //   centerstring("2. View ", 80);
+  //   cout << endl;
+  // }
 } s;
 
 int main()
@@ -275,8 +275,8 @@ label3:
       case 2:
         break;
       case 3:
-        if (s.info_out_page())
-          break;
+        // if (s.info_out_page())
+        break;
       case 4:
         s.set_password();
         // cout << s.get_password();
@@ -297,7 +297,7 @@ label3:
   }
   else
   {
-    system("clear");
+    system("clear||cls");
 
     centerstring("You Failed to Enter the correct Password", 80);
   }
