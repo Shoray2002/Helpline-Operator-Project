@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 #include "sha512.h"
+#include "csvfile.h"
 using namespace std;
+csvfile csv("Data.csv");
 
 //int keys[4] = {30, 37, -4, 7};
 void centerstring(string s, int width)
@@ -11,31 +13,15 @@ void centerstring(string s, int width)
     cout << " ";
   cout << s;
 }
-//string encrypter(string s)
-//{
-//  for (int i = 0; i < s.length(); i++)
-//  {
-//    s[i] = s[i] + keys[i];
-//  }
-//  return s;
-//}
-//string decrypter(string s)
-//{
-//  for (int i = 0; i < s.length(); i++)
-//  {
-//    s[i] = s[i] - keys[i];
-//  }
-//  return s;
-//}
 class Caller_info
 {
+public:
   string name;
   string location;
   string emr_type;
   string urgency;
   string ph_number;
 
-public:
   Caller_info()
   {
     name = "Tester";
@@ -43,6 +29,9 @@ public:
     emr_type = "0";
     urgency = "0";
     ph_number = "101";
+
+    
+    
   }
 
   void get_all_data()
@@ -52,6 +41,7 @@ public:
     get_emr_type();
     get_urgency();
     get_ph_number();
+
     // show_caller_info();
   }
   void get_caller_name()
@@ -126,29 +116,29 @@ public:
     cout << "Caller's location: " << location << endl;
   }
 
-  void write_csv(Caller_info s)
-  {
-    ofstream data;
-    s.get_all_data();
-    data.open("caller_data.dat", ios::binary | ios::app);
-    data.write((char *)&s, sizeof(s));
-    data.close();
-  }
+  // void write_csv(Caller_info s)
+  // {
+  //   ofstream data;
+  //   s.get_all_data();
+  //   data.open("caller_data.dat", ios::binary | ios::app);
+  //   data.write((char *)&s, sizeof(s));
+  //   data.close();
+  // }
 
-  void read_csv(Caller_info s)
-  {
-    ifstream data;
-    // Caller_info obj;
-    data.open("caller_data.dat", ios::binary);
-    data.seekg(ios::cur);
-    while (data.read((char *)&s, sizeof(Caller_info)))
-    {
-      cout << s.name << "\t"
-           << "\t" << s.location << "\t" << s.emr_type << "\t" << s.urgency << "\t" << s.ph_number << endl
-           << endl;
-    }
-    data.close();
-  }
+  // void read_csv(Caller_info s)
+  // {
+  //   ifstream data;
+  //   // Caller_info obj;
+  //   data.open("caller_data.dat", ios::binary);
+  //   data.seekg(ios::cur);
+  //   while (data.read((char *)&s, sizeof(Caller_info)))
+  //   {
+  //     cout << s.name << "\t"
+  //          << "\t" << s.location << "\t" << s.emr_type << "\t" << s.urgency << "\t" << s.ph_number << endl
+  //          << endl;
+  //   }
+  //   data.close();
+  // }
 };
 
 // password
@@ -236,6 +226,7 @@ public:
   }
   int admin_page()
   {
+    
   label1:
     system("clear||cls");
     centerstring("Admin Menu", 80);
@@ -311,9 +302,12 @@ label3:
     label4:
       switch (s.admin_page())
       {
+       
       case 1:
-        // s.info_in_page();
-        s.write_csv(s);
+        s.get_all_data();
+  
+        csv << s.name << s.location << s.emr_type << s.urgency << s.ph_number << endrow;
+        csv.~csvfile();
         cout << "\nPress Enter to go to admin menu...";
         cin.ignore();
         cin.get();
@@ -325,10 +319,13 @@ label3:
         switch (s.view_caller_page())
         {
         case 1:
+
           cout << "\npressed1";
           break;
         case 2:
-          s.read_csv(s);
+          // s.read_csv(s);
+         
+          system(".\\Data.csv");
           cout << "\nPress Enter to go to admin menu...";
           cin.ignore();
           cin.get();
