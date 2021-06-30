@@ -44,6 +44,16 @@ public:
     urgency = "0";
     ph_number = "101";
   }
+
+  void get_all_data()
+  {
+    get_caller_name();
+    get_location();
+    get_emr_type();
+    get_urgency();
+    get_ph_number();
+    // show_caller_info();
+  }
   void get_caller_name()
   {
     system("clear||cls");
@@ -114,6 +124,30 @@ public:
     cout << "Status of urgency: " << urgency << endl;
     cout << "Caller Number: " << ph_number << endl;
     cout << "Caller's location: " << location << endl;
+  }
+
+  void write_csv(Caller_info s)
+  {
+    ofstream data;
+    s.get_all_data();
+    data.open("caller_data.dat", ios::binary | ios::app);
+    data.write((char *)&s, sizeof(s));
+    data.close();
+  }
+
+  void read_csv(Caller_info s)
+  {
+    ifstream data;
+    // Caller_info obj;
+    data.open("caller_data.dat", ios::binary);
+    data.seekg(ios::cur);
+    while (data.read((char *)&s, sizeof(Caller_info)))
+    {
+      cout << s.name << "\t"
+           << "\t" << s.location << "\t" << s.emr_type << "\t" << s.urgency << "\t" << s.ph_number << endl
+           << endl;
+    }
+    data.close();
   }
 };
 
@@ -232,26 +266,38 @@ public:
     else
       return choice;
   }
-  void info_in_page()
-  {
-
-    Caller_info::get_caller_name();
-    Caller_info::get_location();
-    Caller_info::get_emr_type();
-    Caller_info::get_urgency();
-    Caller_info::get_ph_number();
-    Caller_info::show_caller_info();
-  }
-  // int info_out_page()
+  // void info_in_page()
   // {
-  //   centerstring("Caller Information",80);
-  //   cout << endl
-  //        << endl;
-  //   centerstring("1. View Individual caller Information", 80);
-  //   cout << endl;
-  //   centerstring("2. View ", 80);
-  //   cout << endl;
+
+  //   Caller_info::get_caller_name();
+  //   Caller_info::get_location();
+  //   Caller_info::get_emr_type();
+  //   Caller_info::get_urgency();
+  //   Caller_info::get_ph_number();
+  //   Caller_info::show_caller_info();
   // }
+  int view_caller_page()
+  {
+  label5:
+    system("cls||clear");
+    centerstring("Caller Information", 80);
+    cout << endl
+         << endl;
+    centerstring("1. View or Update Individual caller Information", 80);
+    cout << endl;
+    centerstring("2. View the Log of all Callers", 80);
+    unsigned int choice2;
+    cin >> choice2;
+    if (choice2 > 2 || choice2 <= 0)
+    {
+      centerstring("Invalid Input...press enter to try again...", 80);
+      cin.ignore();
+      cin.get();
+      goto label5;
+    }
+    else
+      return choice2;
+  }
 } s;
 
 int main()
@@ -259,14 +305,15 @@ int main()
 
 label3:
   if (s.password_screen())
-  { // cout<<s.welcome_screen();
+  {
     if (s.welcome_screen())
     {
     label4:
       switch (s.admin_page())
       {
       case 1:
-        s.info_in_page();
+        // s.info_in_page();
+        s.write_csv(s);
         cout << "\nPress Enter to go to admin menu...";
         cin.ignore();
         cin.get();
@@ -275,7 +322,23 @@ label3:
       case 2:
         break;
       case 3:
-        // if (s.info_out_page())
+        switch (s.view_caller_page())
+        {
+        case 1:
+          cout << "\npressed1";
+          break;
+        case 2:
+          s.read_csv(s);
+          cout << "\nPress Enter to go to admin menu...";
+          cin.ignore();
+          cin.get();
+          goto label4;
+          break;
+        }
+        cout << "\nPress Enter to go to admin menu...";
+        cin.ignore();
+        cin.get();
+        goto label4;
         break;
       case 4:
         s.set_password();
@@ -284,11 +347,10 @@ label3:
 
         cin.ignore();
         cin.get();
-
-        // s.admin_page();
         goto label4;
         break;
       case 5:
+        goto label3;
         break;
       default:
         cout << "This will never be invoked";
