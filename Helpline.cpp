@@ -2,7 +2,7 @@
 #include "sha512.h"
 #include "csvfile.h"
 using namespace std;
-csvfile csv("Data.csv");
+// csvfile csv("Data.csv");
 
 //int keys[4] = {30, 37, -4, 7};
 void centerstring(string s, int width)
@@ -29,9 +29,6 @@ public:
     emr_type = "0";
     urgency = "0";
     ph_number = "101";
-
-    
-    
   }
 
   void get_all_data()
@@ -226,7 +223,7 @@ public:
   }
   int admin_page()
   {
-    
+
   label1:
     system("clear||cls");
     centerstring("Admin Menu", 80);
@@ -294,71 +291,64 @@ public:
 int main()
 {
 
-label3:
-  if (s.password_screen())
+  while (1)
   {
-    if (s.welcome_screen())
+    if (s.password_screen())
     {
-    label4:
-      switch (s.admin_page())
+      s.welcome_screen();
+      int t = 0, k = 0;
+      do
       {
-       
-      case 1:
-        s.get_all_data();
-  
-        csv << s.name << s.location << s.emr_type << s.urgency << s.ph_number << endrow;
-        csv.~csvfile();
-        cout << "\nPress Enter to go to admin menu...";
-        cin.ignore();
-        cin.get();
-        goto label4;
-        break;
-      case 2:
-        break;
-      case 3:
-        switch (s.view_caller_page())
+        t = s.admin_page();
+        if (t == 1)
         {
-        case 1:
-
-          cout << "\npressed1";
-          break;
-        case 2:
-          // s.read_csv(s);
-         
-          system(".\\Data.csv");
+          s.get_all_data();
+          csvfile csv("Data.csv");
+          csv << s.name << s.location << s.emr_type << s.urgency << s.ph_number << endrow;
+          // csv.~csvfile();
           cout << "\nPress Enter to go to admin menu...";
           cin.ignore();
           cin.get();
-          goto label4;
+        }
+        else if (t == 2)
+        {
+          ;
+        }
+        else if (t == 3)
+        {
+          k = s.view_caller_page();
+          if (k == 1)
+          {
+            cout << "pressed1";
+          }
+          else
+          {
+            system(".\\Data.csv");
+            cout << "\nPress Enter to go to admin menu...";
+            cin.ignore();
+            cin.get();
+          }
+        }
+        else if (t == 4)
+        {
+          s.set_password();
+          // cout << s.get_password();
+          cout << "\nPress Enter to go to admin menu...";
+
+          cin.ignore();
+          cin.get();
+        }
+        else if (t == 5)
+        {
           break;
         }
-        cout << "\nPress Enter to go to admin menu...";
-        cin.ignore();
-        cin.get();
-        goto label4;
-        break;
-      case 4:
-        s.set_password();
-        // cout << s.get_password();
-        cout << "\nPress Enter to go to admin menu...";
+        else
+        {
+          cout << "Execution error";
+        }
 
-        cin.ignore();
-        cin.get();
-        goto label4;
-        break;
-      case 5:
-        goto label3;
-        break;
-      default:
-        cout << "This will never be invoked";
-      }
+      } while (1);
     }
-  }
-  else
-  {
-    system("clear||cls");
-
-    centerstring("You Failed to Enter the correct Password", 80);
   }
 
   cout << "\n\nPress Enter to exit program...";
