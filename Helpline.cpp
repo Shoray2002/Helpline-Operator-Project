@@ -233,7 +233,7 @@ public:
     cout << endl;
     centerstring("2. View Emergency Unit Status", 80);
     cout << endl;
-    centerstring("3. View Previous Callers", 80);
+    centerstring("3. View/Edit Caller Log", 80);
     cout << endl;
     centerstring("4. Change Admin Password", 80);
     cout << endl;
@@ -264,27 +264,13 @@ public:
   //   Caller_info::get_ph_number();
   //   Caller_info::show_caller_info();
   // }
-  int view_caller_page()
+  void view_caller_page()
   {
   label5:
     system("cls||clear");
     centerstring("Caller Information", 80);
     cout << endl
          << endl;
-    centerstring("1. View or Update Individual caller Information", 80);
-    cout << endl;
-    centerstring("2. View the Log of all Callers", 80);
-    unsigned int choice2;
-    cin >> choice2;
-    if (choice2 > 2 || choice2 <= 0)
-    {
-      centerstring("Invalid Input...press enter to try again...", 80);
-      cin.ignore();
-      cin.get();
-      goto label5;
-    }
-    else
-      return choice2;
   }
 } s;
 
@@ -316,18 +302,19 @@ int main()
         }
         else if (t == 3)
         {
-          k = s.view_caller_page();
-          if (k == 1)
-          {
-            cout << "pressed1";
-          }
-          else
-          {
-            system("./Data.csv||xdg-open ./Data.csv");
-            cout << "\nPress Enter to go to admin menu...";
-            cin.ignore();
-            cin.get();
-          }
+          s.view_caller_page();
+          // if (k == 1)
+          // {
+          //   cout << "pressed1";
+          // }
+          // else
+          // {
+          cout<<"\nLog file is opening...";
+          system(".\\Data.csv");
+          cout << "\nPress Enter to go to admin menu...";
+          cin.ignore();
+          cin.get();
+          // }
         }
         else if (t == 4)
         {
