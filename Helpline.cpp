@@ -323,7 +323,7 @@ int main()
           }
           else
           {
-            system(".\\Data.csv");
+            system("./Data.csv||xdg-open ./Data.csv");
             cout << "\nPress Enter to go to admin menu...";
             cin.ignore();
             cin.get();
