@@ -21,6 +21,7 @@ public:
   string emr_type;
   string urgency;
   string ph_number;
+  string call_time;
 
   Caller_info()
   {
@@ -38,6 +39,7 @@ public:
     get_emr_type();
     get_urgency();
     get_ph_number();
+    get_time();
 
     // show_caller_info();
   }
@@ -113,14 +115,12 @@ public:
     cout << "Caller's location: " << location << endl;
   }
 
-  // void write_csv(Caller_info s)
-  // {
-  //   ofstream data;
-  //   s.get_all_data();
-  //   data.open("caller_data.dat", ios::binary | ios::app);
-  //   data.write((char *)&s, sizeof(s));
-  //   data.close();
-  // }
+  void get_time()
+  {
+
+    time_t givemetime = time(NULL);
+    call_time = ctime(&givemetime);
+  }
 
   // void read_csv(Caller_info s)
   // {
@@ -304,7 +304,7 @@ int main()
         {
           s.get_all_data();
           csvfile csv("Data.csv");
-          csv << s.name << s.location << s.emr_type << s.urgency << s.ph_number << endrow;
+          csv << s.name << s.location << s.emr_type << s.urgency << s.ph_number << s.call_time << endrow;
           // csv.~csvfile();
           cout << "\nPress Enter to go to admin menu...";
           cin.ignore();
