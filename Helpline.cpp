@@ -290,6 +290,12 @@ int main()
         {
           s.get_all_data();
           csvfile csv("Data.csv");
+          // csv << "X"
+          //     << "NAME"
+          //     << "LOCATION"
+          //     << "EMER_TYPE"
+          //     << "URGENCY"
+          //     << "PH.NO." << endrow;
           csv << s.name << s.location << s.emr_type << s.urgency << s.ph_number << s.call_time << endrow;
           // csv.~csvfile();
           cout << "\nPress Enter to go to admin menu...";
