@@ -17,7 +17,8 @@ public:
     void update(const unsigned char *message, unsigned int len);
     void final(unsigned char *digest);
     static const unsigned int DIGEST_SIZE = ( 512 / 8);
- 
+    
+
 protected:
     void transform(const unsigned char *message, unsigned int block_nb);
     unsigned int m_tot_len;
@@ -25,8 +26,9 @@ protected:
     unsigned char m_block[2 * SHA384_512_BLOCK_SIZE];
     uint64 m_h[8];
 };
- 
- 
+
+void centerstring(string s, int width);
+
 std::string sha512(std::string input);
  
 #define SHA2_SHFR(x, n)    (x >> n)

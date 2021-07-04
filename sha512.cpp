@@ -1,7 +1,8 @@
+#include<iostream>
 #include <cstring>
 #include <fstream>
 #include "sha512.h"
- 
+using namespace std;
 const unsigned long long SHA512::sha512_k[80] = //ULL = uint64
             {0x428a2f98d728ae22ULL, 0x7137449123ef65cdULL,
              0xb5c0fbcfec4d3b2fULL, 0xe9b5dba58189dbbcULL,
@@ -137,7 +138,16 @@ void SHA512::final(unsigned char *digest)
         SHA2_UNPACK64(m_h[i], &digest[i << 3]);
     }
 }
- 
+
+void centerstring(string s, int width)
+{
+    int l = s.length();
+    int pos = (int)((width - l) / 2);
+    for (int i = 0; i < pos; i++)
+        cout << " ";
+    cout << s;
+}
+
 std::string sha512(std::string input)
 {
     unsigned char digest[SHA512::DIGEST_SIZE];
