@@ -3,9 +3,10 @@
 // using namespace std;
 #include"password.h"
 #include"caller_info.h"
+#include "units.h"
 #include <string>
 using std::string;
-class Show : public Password, public Caller_info
+class Show : public Password, public Caller_info,public Units
 {
 public:
   int password_screen();
@@ -14,7 +15,7 @@ public:
   int admin_page();
   void view_caller_page();
 
-  void view_unit_status();
+  int view_unit_status();
   
 };
 

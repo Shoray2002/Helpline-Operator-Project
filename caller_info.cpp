@@ -3,6 +3,7 @@
 #include"caller_info.h"
 
 #include "sha512.h"
+#include"csvfile.h"
 // #include "center_string.h"
 using namespace std;
 
@@ -24,6 +25,14 @@ Caller_info::Caller_info()
     get_urgency();
     get_ph_number();
     get_time();
+    csvfile csv("Data.csv");
+    // csv << "X"
+    //     << "NAME"
+    //     << "LOCATION"
+    //     << "EMER_TYPE"
+    //     << "URGENCY"
+    //     << "PH.NO." << endrow;
+    csv << name << location << (char)toupper(emr_type[0])  << (char)toupper(urgency[0]) << ph_number << call_time <<units<< endrow;
   }
 
   void Caller_info::get_caller_name()
@@ -45,23 +54,32 @@ Caller_info::Caller_info()
     getline(cin, location);
   }
 
-  void Caller_info::get_emr_type()
-  {
+  char Caller_info::get_emr_type()
+  {emlabel:
     system("clear||cls");
     cout << endl;
     centerstring("Enter type of emergency", 80);
     cout << endl;
-    centerstring("\"p\" for police", 80);
+    centerstring("\"P\" for police", 80);
     cout << endl;
-    centerstring("\"f\" for fire", 80);
+    centerstring("\"F\" for fire", 80);
     cout << endl;
-    centerstring("\"m\" for medical", 80);
+    centerstring("\"M\" for medical", 80);
     cout << endl;
-    centerstring("\"c\" for COVID", 80);
+    centerstring("\"C\" for COVID", 80);
     cout << endl;
-    centerstring("(Enter a Combination of the above if Multiple Services are needed): ", 80);
     centerstring("...", 80);
     cin >> emr_type;
+    char upEmr = toupper(emr_type[0]);
+    if (emr_type.length() != 1 || (upEmr != 'P' && upEmr != 'F' && upEmr != 'M' && upEmr != 'C'))
+    {
+      centerstring("Invalid Input....Click Enter to try again...", 80);
+      cin.ignore();
+      cin.get();
+      goto emlabel;
+    }
+
+    return upEmr;
   }
 
   char Caller_info::get_urgency()
@@ -117,15 +135,15 @@ Caller_info::Caller_info()
       goto phlabel;
     }
   }
-  void Caller_info::show_caller_info()
-  {
-    system("clear||cls");
-    cout << "Caller Name: " << name << endl;
-    cout << "Emergency type: " << emr_type << endl;
-    cout << "Status of urgency: " << urgency << endl;
-    cout << "Caller Number: " << ph_number << endl;
-    cout << "Caller's location: " << location << endl;
-  }
+  // void Caller_info::show_caller_info()
+  // {
+  //   system("clear||cls");
+  //   cout << "Caller Name: " << name << endl;
+  //   cout << "Emergency type: " << emr_type << endl;
+  //   cout << "Status of urgency: " << urgency << endl;
+  //   cout << "Caller Number: " << ph_number << endl;
+  //   cout << "Caller's location: " << location << endl;
+  // }
 
   void Caller_info::get_time()
   {
@@ -133,3 +151,8 @@ Caller_info::Caller_info()
     time_t givemetime = time(NULL);
     call_time = ctime(&givemetime);
   }
+int Caller_info::get_unit_allocation(){
+  
+
+
+}

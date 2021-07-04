@@ -13,6 +13,7 @@ public:
   string urgency;
   string ph_number;
   string call_time;
+  int units;
 
   Caller_info();
 
@@ -21,14 +22,16 @@ public:
 
   void get_location();
   
-  void get_emr_type();
+  char get_emr_type();
   
 
   char get_urgency();
   void get_ph_number();
-  void show_caller_info();
+  // void show_caller_info();
 
   void get_time();
+
+  int get_unit_allocation();
 };
 
 #endif
