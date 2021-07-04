@@ -30,7 +30,8 @@ Caller_info::Caller_info()
   {
     system("clear||cls");
     cout << endl;
-    centerstring("Enter", 80);
+    centerstring("Enter Name of caller", 80);
+    centerstring("...", 79);
     cin.ignore();
     getline(cin, name);
   }

@@ -27,7 +27,7 @@ protected:
     uint64 m_h[8];
 };
 
-void centerstring(string s, int width);
+void centerstring(std::string s, int width);
 
 std::string sha512(std::string input);
  

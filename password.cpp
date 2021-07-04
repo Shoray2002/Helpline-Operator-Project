@@ -26,7 +26,7 @@ Password:: Password()
   void Password::set_password()
   {
     cout << endl;
-    centerstring("Enter the new password: ", 80);
+    centerstring("Enter a new password: ", 80);
     cin >> password;
     fstream pword;
     pword.open("hashed_pass.txt", ios::out);

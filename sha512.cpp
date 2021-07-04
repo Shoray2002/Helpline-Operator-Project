@@ -139,7 +139,7 @@ void SHA512::final(unsigned char *digest)
     }
 }
 
-void centerstring(string s, int width)
+void centerstring(std::string s, int width)
 {
     int l = s.length();
     int pos = (int)((width - l) / 2);
