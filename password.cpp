@@ -25,6 +25,7 @@ Password:: Password()
   }
   void Password::set_password()
   {
+    
     cout << endl;
     centerstring("Enter a new password: ", 80);
     cin >> password;
@@ -33,5 +34,5 @@ Password:: Password()
 
     pword << sha512(password);
     pword.close();
-  }
-
+    
+    }
