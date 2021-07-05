@@ -1,10 +1,11 @@
 #ifndef __Caller_info
 #define __Caller_info
 #include<string>
+#include "units.h"
 using std::string;
 
 
-class Caller_info
+class Caller_info: public Units
 {
 public:
   string name;
@@ -31,7 +32,7 @@ public:
 
   void get_time();
 
-  int get_unit_allocation();
+  void get_unit_allocation();
 };
 
 #endif

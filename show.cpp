@@ -53,20 +53,22 @@ adlabel:
        << endl;
   centerstring("1. Enter New Caller Info", 80);
   cout << endl;
-  centerstring("2. View Emergency Unit Status", 80);
+  centerstring("2. View Remaining Units", 80);
   cout << endl;
   centerstring("3. View/Edit Caller Log", 80);
   cout << endl;
-  centerstring("4. Change Admin Password", 80);
+  centerstring("4. Set Number of Units Available Today", 80);
   cout << endl;
-  centerstring("5. LogOut", 80);
+  centerstring("5. Change Admin Password", 80);
+  cout << endl;
+  centerstring("6. LogOut", 80);
   cout << endl
        << endl;
   centerstring("Enter Your choice...", 80);
   unsigned int choice;
 
   cin >> choice;
-  if (choice > 5 || choice <= 0)
+  if (choice > 6 || choice <= 0)
   {
     centerstring("Invalid Input...press enter to try again...", 80);
     cin.ignore();
@@ -87,31 +89,26 @@ void Show::view_caller_page()
   cout << "\nLog file closed...";
 }
 
-int Show::view_unit_status()
-{ unitlabel:
-  system("cls||clear");
-  centerstring("Unit Status", 80);
-  cout << endl
-       << endl;
+// void Show::view_unit_status()
+// { 
+//   system("cls||clear");
+//   centerstring("Remaining Unit Status", 80);
+//   cout << endl
+//        << endl;
   
-    int t;
-    centerstring("1.View remaining Units",80);
-    cout << endl;
-    centerstring("2.Set number of units Available",80);
-    cout<<endl;
-    centerstring("...",79);
-    cin>>t;
-    if (t > 2 || t <= 0)
-    {
-      centerstring("Invalid Input...press enter to try again...", 80);
-      cin.ignore();
-      cin.get();
-      goto unitlabel;
-    }
-    else return t;
-
-  
-
-
-      
-}
+    // int t;
+    // centerstring("1.View remaining Units",80);
+    // cout << endl;
+    // centerstring("2.Set number of units Available",80);
+    // cout<<endl;
+    // centerstring("...",79);
+    // cin>>t;
+    // if (t > 2 || t <= 0)
+    // {
+    //   centerstring("Invalid Input...press enter to try again...", 80);
+    //   cin.ignore();
+    //   cin.get();
+    //   goto unitlabel;
+    // }
+    // else return t;   
+// }

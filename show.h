@@ -6,7 +6,7 @@
 #include "units.h"
 #include <string>
 using std::string;
-class Show : public Password, public Caller_info,public Units
+class Show : public Password, public Caller_info
 {
 public:
   int password_screen();
@@ -15,7 +15,7 @@ public:
   int admin_page();
   void view_caller_page();
 
-  int view_unit_status();
+  void view_unit_status();
   
 };
 

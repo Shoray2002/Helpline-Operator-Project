@@ -3,16 +3,16 @@
 #include <string>
 // using std::string;
 class Units
-{
+{public:
   int police;
   int fire_truck;
   int ambulance;
   int covid;
 
-public:
+
   Units();
   void set_units();
-  void allocate_units(char,int);
+  int allocate_units(char,int);
   void show_units();
 
 };

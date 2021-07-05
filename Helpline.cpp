@@ -28,22 +28,11 @@ void runner()
         }
         else if (t == 2)
         {
-          int i = s.view_unit_status();
-          if (i == 1)
-          {
-            s.show_units();
-            cout << "\nPress Enter to go to admin menu...";
-            cin.ignore();
-            cin.get();
-          }
+          s.show_units();
+          cout << "\nPress Enter to go to admin menu...";
+          cin.ignore();
+          cin.get();
 
-          else if (i == 2)
-          {
-            s.set_units();
-            cout << "\nPress Enter to go to admin menu...";
-            cin.ignore();
-            cin.get();
-          }
          
         }
         else if (t == 3)
@@ -53,7 +42,13 @@ void runner()
           cin.ignore();
           cin.get();
         }
-        else if (t == 4)
+        else if(t==4){
+          s.set_units();
+          cout << "\nPress Enter to go to admin menu...";
+          cin.ignore();
+          cin.get();
+        }
+        else if (t == 5)
         {
           s.set_password();
           cout << "\nPress Enter to go to admin menu...";
@@ -61,7 +56,7 @@ void runner()
           cin.ignore();
           cin.get();
         }
-        else if (t == 5)
+        else if (t == 6)
         {
           break;
         }
