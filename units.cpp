@@ -60,13 +60,19 @@ void Units::set_units()
 
 void Units::show_units()
 {
+  system("clear||cls");
+  centerstring("Unit Status", 80);
+  cout << endl
+       << endl;
   centerstring("Sl. No:", 25);
-  centerstring("Type", 80);
-  centerstring("Units", 135);
-  cout << endl;
+  centerstring("Type", 45);
+  centerstring("Units", 60);
+  cout << endl
+       << "-------------------------------------------------------------------------------"
+       << endl;
 
-  cout << setw(25) << 1 << setw(35) << "Police" << setw(45) << police << endl;
-  cout << setw(25) << 2 << setw(35) << "Fire" << setw(45) << fire_truck << endl;
-  cout << setw(25) << 3 << setw(35) << "Medical" << setw(45) << ambulance << endl;
-  cout << setw(25) << 4 << setw(35) << "COVID" << setw(45) << covid << endl;
+  cout << setw(12) << 1 << setw(30) << "Police" << setw(30) << police << endl;
+  cout << setw(12) << 2 << setw(30) << "Fire" << setw(30) << fire_truck << endl;
+  cout << setw(12) << 3 << setw(30) << "Medical" << setw(30) << ambulance << endl;
+  cout << setw(12) << 4 << setw(30) << "COVID" << setw(30) << covid << endl;
 }
