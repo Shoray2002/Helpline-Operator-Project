@@ -7,7 +7,7 @@ using std::string;
 
 class Caller_info: public Units
 {
-public:
+
   string name;
   string location;
   string emr_type;
@@ -15,7 +15,7 @@ public:
   string ph_number;
   string call_time;
   int units;
-
+public:
   Caller_info();
 
   void get_all_data();
