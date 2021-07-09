@@ -6,10 +6,10 @@ using namespace std;
 
 Password::Password()
 {
-  fstream pword;
-  pword.open("hashed_pass.txt", ios::out);
-  pword << sha512("0000");
-  pword.close();
+  // fstream pword;
+  // pword.open("hashed_pass.txt", ios::out);
+  // pword << sha512("0000");
+  // pword.close();
 }
 string Password::get_password_hash()
 {
