@@ -4,7 +4,6 @@
 #include "units.h"
 #include "sha512.h"
 #include "csvfile.h"
-// #include "center_string.h"
 using namespace std;
 
 Caller_info::Caller_info()
@@ -38,26 +37,30 @@ void Caller_info::get_all_data()
 }
 
 void Caller_info::get_caller_name()
-{namelabel:
+{
+namelabel:
   system("clear||cls");
   cout << endl;
   centerstring("Enter Name of caller", 80);
-  
+
   centerstring("...", 80);
   cin.ignore();
   getline(cin, name);
-  if(name.empty())goto namelabel;
+  if (name.empty())
+    goto namelabel;
 }
 
 void Caller_info::get_location()
-{loclabel:
+{
+loclabel:
   system("clear||cls");
   cout << endl;
   centerstring("Enter location of caller", 80);
-  
+
   centerstring("...", 80);
   getline(cin, location);
-  if(location.empty())goto loclabel;
+  if (location.empty())
+    goto loclabel;
 }
 
 char Caller_info::get_emr_type()
@@ -74,7 +77,7 @@ emlabel:
   centerstring("\"M\" for medical", 80);
   cout << endl;
   centerstring("\"C\" for COVID", 80);
-  
+
   centerstring("...", 80);
   cin >> emr_type;
   char upEmr = toupper(emr_type[0]);
@@ -101,7 +104,7 @@ urlabel:
   centerstring("\"O\" for Code Orange", 80);
   cout << endl;
   centerstring("\"Y\" for Code Yellow", 80);
-  
+
   centerstring("...", 80);
   cin >> urgency;
   char upUrgency = toupper(urgency[0]);
@@ -122,7 +125,7 @@ phlabel:
   system("clear||cls");
   cout << endl;
   centerstring("Enter caller's phone number: ", 80);
-  
+
   centerstring("...", 80);
   cin >> ph_number;
   int ch = 0;
@@ -135,7 +138,6 @@ phlabel:
       break;
     }
   }
-  // cout<<ch;
   if (ch != 0 || len > 10 || len < 6)
   {
     centerstring("Invalid Phone Number....Click Enter to try again...", 80);
@@ -144,15 +146,6 @@ phlabel:
     goto phlabel;
   }
 }
-// void Caller_info::show_caller_info()
-// {
-//   system("clear||cls");
-//   cout << "Caller Name: " << name << endl;
-//   cout << "Emergency type: " << emr_type << endl;
-//   cout << "Status of urgency: " << urgency << endl;
-//   cout << "Caller Number: " << ph_number << endl;
-//   cout << "Caller's location: " << location << endl;
-// }
 
 void Caller_info::get_time()
 {
@@ -166,15 +159,12 @@ alloclabel:
   system("clear||cls");
   cout << endl;
   centerstring("Enter quantity of units to be alloted: ", 80);
-  
   centerstring("...", 80);
-
   cin >> units;
   char c = (char)toupper(emr_type[0]);
   int res = allocate_units(c, units);
   if (res == 0)
   {
-
     centerstring("Number of allocated units is greater than availaible units..", 80);
     cout << endl;
     centerstring("Click Enter to try again...", 80);

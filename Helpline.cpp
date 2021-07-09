@@ -6,7 +6,6 @@
 #include "show.h"
 #include "units.h"
 using namespace std;
-// csvfile csv("Data.csv");
 Show s;
 void runner()
 {
@@ -19,7 +18,8 @@ void runner()
       s.welcome_screen();
       int t = 0;
       do
-      {system("Color 04");
+      {
+        system("Color 04");
         t = s.admin_page();
         if (t == 1)
         {
@@ -46,7 +46,8 @@ void runner()
           cin.ignore();
           cin.get();
         }
-        else if(t==4){
+        else if (t == 4)
+        {
           system("Color 0A");
           s.set_units();
           cout << "\nPress Enter to go to admin menu...";
@@ -66,13 +67,7 @@ void runner()
         {
           break;
         }
-        else
-        {
-          cout << "\nExecution error...Click Enter to Exit...";
-          cin.ignore();
-          cin.get();
-          exit(1);
-        }
+       
 
       } while (1);
     }

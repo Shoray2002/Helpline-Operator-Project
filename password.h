@@ -12,5 +12,4 @@ public:
   void set_password();
 };
 
-
 #endif

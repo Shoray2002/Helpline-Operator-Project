@@ -2,8 +2,7 @@
 #include <iomanip>
 #include "show.h"
 #include "sha512.h"
-#include"units.h"
-// #include"center_string.h"
+#include "units.h"
 
 using namespace std;
 int Show::password_screen()
@@ -88,27 +87,3 @@ void Show::view_caller_page()
   system(".\\Data.csv");
   cout << "\nLog file closed...";
 }
-
-// void Show::view_unit_status()
-// { 
-//   system("cls||clear");
-//   centerstring("Remaining Unit Status", 80);
-//   cout << endl
-//        << endl;
-  
-    // int t;
-    // centerstring("1.View remaining Units",80);
-    // cout << endl;
-    // centerstring("2.Set number of units Available",80);
-    // cout<<endl;
-    // centerstring("...",79);
-    // cin>>t;
-    // if (t > 2 || t <= 0)
-    // {
-    //   centerstring("Invalid Input...press enter to try again...", 80);
-    //   cin.ignore();
-    //   cin.get();
-    //   goto unitlabel;
-    // }
-    // else return t;   
-// }
