@@ -11,19 +11,19 @@ void runner()
 {
   while (1)
   {
-    system("Color 03");
+    system("Color 03||clear");
     if (s.password_screen())
     {
-      system("Color 0F");
+      system("Color 0F||clear");
       s.welcome_screen();
       int t = 0;
       do
       {
-        system("Color 04");
+        system("Color 04||clear");
         t = s.admin_page();
         if (t == 1)
         {
-          system("Color 06");
+          system("Color 06||clear");
           s.get_all_data();
           // csv.~csvfile();
           cout << "\nPress Enter to go to admin menu...";
@@ -32,7 +32,7 @@ void runner()
         }
         else if (t == 2)
         {
-          system("Color 0A");
+          system("Color 0A||clear");
           s.show_units();
           cout << "\nPress Enter to go to admin menu...";
           cin.ignore();
@@ -40,7 +40,7 @@ void runner()
         }
         else if (t == 3)
         {
-          system("Color 05");
+          system("Color 05||clear");
           s.view_caller_page();
           cout << "\nPress Enter to go to admin menu...";
           cin.ignore();
@@ -48,7 +48,7 @@ void runner()
         }
         else if (t == 4)
         {
-          system("Color 0A");
+          system("Color 0A||clear");
           s.set_units();
           cout << "\nPress Enter to go to admin menu...";
           cin.ignore();
@@ -56,7 +56,7 @@ void runner()
         }
         else if (t == 5)
         {
-          system("Color 09");
+          system("Color 09||clear");
           s.set_password();
           cout << "\nPress Enter to go to admin menu...";
 
@@ -73,7 +73,7 @@ void runner()
     }
     else
     {
-      system("Color 03");
+      system("Color 03||clear");
       cout << "\n\nMax attempts made...Click Enter to Exit...";
       cin.ignore();
       cin.get();

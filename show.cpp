@@ -84,6 +84,6 @@ void Show::view_caller_page()
   cout << endl
        << endl;
   cout << "\nLog file is opening...";
-  system(".\\Data.csv");
+  system(".\\Data.csv||xdg-open ./Data.csv");
   cout << "\nLog file closed...";
 }
