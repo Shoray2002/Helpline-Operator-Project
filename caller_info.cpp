@@ -27,12 +27,6 @@ void Caller_info::get_all_data()
   get_time();
   get_unit_allocation();
   csvfile csv("Data.csv");
-  // csv << "X"
-  //     << "NAME"
-  //     << "LOCATION"
-  //     << "EMER_TYPE"
-  //     << "URGENCY"
-  //     << "PH.NO." << endrow;
   csv << name << location << (char)toupper(emr_type[0]) << (char)toupper(urgency[0]) << ph_number << call_time << units << endrow;
 }
 
