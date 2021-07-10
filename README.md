@@ -19,3 +19,4 @@
   * Type the following Commands:
      * `make clean`
      * `make all`
+     * `./help`
