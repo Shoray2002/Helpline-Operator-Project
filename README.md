@@ -7,6 +7,8 @@
 
 ## Project Report: 
 * [Download](https://grabify.link/05N4U4)
+# Password: 
+ The password of the system is initially set as "0000" which can be changed and remains that even in different System runs until changed again.
 
 ## Running the system (Prerequisites: g++ )
 * On Winodows:
