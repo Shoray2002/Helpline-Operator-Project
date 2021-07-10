@@ -6,7 +6,7 @@
 - Aman Garg (LCI2020031)
 
 ## Project Report: 
-* [Download](https://grabify.link/05N4U4)
+* [Download](https://github.com/Shoray2002/Helpline-Operator-Project/raw/master/Helpline%20Operator%20System%20project%20Report.pdf)
 # Password: 
  The password of the system is initially set as "0000" which can be changed and remains that even in different System runs until changed again.
 
