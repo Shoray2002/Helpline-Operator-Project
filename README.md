@@ -10,7 +10,7 @@
 # Password: 
  The password of the system is initially set as "0000" which can be changed and remains that even in different System runs until changed again.
 
-## Running the system (Prerequisites: g++ )
+## Running the system (Dependancy: g++ )
 * On Winodows:
   * Navigate to the Project In CMD
   * Type the following Commands: 
